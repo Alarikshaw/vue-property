@@ -10,7 +10,6 @@ for (let item of RouterList) {
   routerWhile.push(item.path)
 }
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
-console.log(routerWhile)
 const whiteList = routerWhile // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {

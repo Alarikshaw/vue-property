@@ -1,5 +1,5 @@
 <template>
-    <div class="practice" v-loading="getLoading">
+    <div class="practice">
         这是practice
         <div class="practice-list">
             <ul class="practice-ul">
@@ -16,7 +16,7 @@
 </template>
 <script>
 import { RouterRecursion } from './../../utils/whitelist';
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
     name: 'practice',
     data() {
@@ -30,16 +30,25 @@ export default {
         this.InitRouter();
     },
     computed: {
-        ...mapGetters('router', ['getLoading']),
+        ...mapGetters('router', ['getLoading', 'getRouterPro']),
     },
     methods: {
+        ...mapMutations('router', ['editRoute', 'editLoading']),
+        ...mapActions('router', ['asyncLoading']),
         InitRouter() {
+            // @ts-ignore
             this.routerArray = RouterRecursion
         },
         routerClick(data) {
+            let childrenArray = [...data.children];
+            // for (let item of childrenArray) {
+            //     item.component = item.component.toString();
+            // }
+            this.editRoute(childrenArray)
+            // @ts-ignore
             this.$router.push({
                 name:  data.name,
-            })
+            });
         }
     },
     mounted(){

@@ -4,12 +4,17 @@ export const router = {
         routerLoading: false,
         routerArray: []
     },
-    muactions: {
+    mutations: {
         editRoute(state, list) {
             state.routerArray = list;
         },
         editLoading(state, isSateLoading) {
             state.routerLoading = isSateLoading;
+        }
+    },
+    actions: {
+        asyncLoading(context, isLoad) {
+            context.commit('editLoading', isLoad)
         }
     },
     getters: {
@@ -19,6 +24,5 @@ export const router = {
         getLoading(state) {
             return state.routerLoading
         }
-    }
-
+    },
 }

@@ -27,14 +27,6 @@ export let RouterList = [
             // @ts-ignore
             import('@/view/vuex/vuexPro.vue')
     },
-    // {
-    //     path: '/vuexPro',
-    //     name: 'vuexPro',
-    //     component: () => {
-    //         // @ts-ignore
-    //         import('@/view/vuex/vuexPro.vue')
-    //     }
-    // }
 ];
 export let RouterRecursion = [
     {
@@ -47,12 +39,14 @@ export let RouterRecursion = [
                 parent: 'vuex',
                 path: "/vuexEdit",
                 name: 'vuexEdit',
+                component: '@/view/vuex/vuexEdit.vue'
             },
             {
                 id: 'vuexPro',
                 parent: 'vuex',
                 path: '/vuexPro',
                 name: 'vuexPro',
+                component: '@/view/vuex/vuexPro.vue'
             }
         ]
     },

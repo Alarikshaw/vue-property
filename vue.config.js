@@ -38,4 +38,5 @@ module.exports = {
         }, // css预设器配置项
         modules: false // 启用 CSS modules for all css / pre-processor files.
     },
+    transpileDependencies: ['vuex-persist']
 }

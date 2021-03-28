@@ -11,11 +11,11 @@ export const user = {
         },
         token: '',
     },
-    muactions: {
+    mutations: {
         addAge(state) {
             state.age++;
         },
-        edit(state, age) {
+        editAge(state, age) {
             state.age = age;
         },
         removeAge(state) {
@@ -29,13 +29,13 @@ export const user = {
         }
     },
     actions: {
-        updateToken(context, data) {
+        updateToken(context, name) {
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    context.commit('edit', data?.edit);
-                    context.commit('editName', data?.name);
+                    // context.commit('editAge', data?.edit);
+                    context.commit('editName', name);
                     resolve({
-                        message: '修改过了',
+                        message: '异步修改',
                         code: 1
                     })
                 }, 2000)
@@ -46,6 +46,5 @@ export const user = {
         userInfo(state) {
             return state
         }
-    }
-
+    },
 }
