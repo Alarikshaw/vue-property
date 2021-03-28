@@ -17,13 +17,32 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+body {
+    background-color: #fffaf0;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+body, html {
+  height: 100%;
+  overflow-y: hidden;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  > div {
+    padding-top: 60px;
+  }
 }
+
 </style>

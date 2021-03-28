@@ -1,11 +1,17 @@
-import router from './router'
-import { Message } from 'element-ui'
-import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 
-NProgress.configure({ showSpinner: false }) // NProgress Configuration
+import { Message } from 'element-ui'
+import NProgress from 'nprogress' // progress bar
+import { RouterList } from './utils/whitelist'
+import router from './router';
 
-const whiteList = ['/init', '/practice'] // no redirect whitelist
+let routerWhile = [];
+for (let item of RouterList) {
+  routerWhile.push(item.path)
+}
+NProgress.configure({ showSpinner: false }) // NProgress Configuration
+console.log(routerWhile)
+const whiteList = routerWhile // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar
@@ -13,9 +19,8 @@ router.beforeEach(async(to, from, next) => {
 
   // determine whether the user has logged in
   const hasToken = 0;
-
   if (hasToken) {
-    if (to.path === '/init') {
+    if (to.path === '/practice') {
       // if is logged in, redirect to the home page
       next({ path: '/' })
       NProgress.done()
@@ -26,7 +31,7 @@ router.beforeEach(async(to, from, next) => {
       } catch (error) {
         // remove token and go to login page to re-login
         Message.error(error || 'Has Error')
-        next(`/init?redirect=${to.path}`)
+        next(`/practice?redirect=${to.path}`)
         NProgress.done()
       }
     }
@@ -38,7 +43,7 @@ router.beforeEach(async(to, from, next) => {
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next(`/init?redirect=${to.path}`)
+      next(`/practice?redirect=${to.path}`)
       NProgress.done()
     }
   }
