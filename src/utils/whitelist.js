@@ -27,6 +27,20 @@ export let RouterList = [
             // @ts-ignore
             import('@/view/vuex/vuexPro.vue')
     },
+    {
+        path: '/nodeList',
+        name: 'nodeList',
+        component: () =>
+            // @ts-ignore
+            import('@/view/nodeList/nodeList.vue')
+    },
+    {
+        path: '/singlyLinkedList',
+        name: 'singlyLinkedList',
+        component: () =>
+            // @ts-ignore
+            import('@/view/nodeList/singlyLinkedList.vue')
+    },
 ];
 export let RouterRecursion = [
     {
@@ -50,6 +64,20 @@ export let RouterRecursion = [
             }
         ]
     },
+    {
+        d: 'nodeList',
+        path: '/nodeList',
+        name: 'nodeList',
+        children: [
+            {
+                id: 'singlyLinkedList',
+                parent: 'nodeList',
+                path: "/singlyLinkedList",
+                name: 'singlyLinkedList',
+                component: '@/view/nodeList/singlyLinkedList.vue'
+            },
+        ]
+    }
     
 ];
 

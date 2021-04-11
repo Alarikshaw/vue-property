@@ -12,13 +12,20 @@
                 </li>
             </ul>
         </div>
+        <!-- <div class="content-json">{{ routerArray }}</div> -->
+        <vue-json-pretty :path="'res'" :data="routerArray" > </vue-json-pretty>
     </div>
 </template>
 <script>
 import { RouterRecursion } from './../../utils/whitelist';
 import { mapGetters, mapMutations, mapActions } from "vuex";
+import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 export default {
     name: 'practice',
+    components: {
+        VueJsonPretty,
+    },
     data() {
         return {
             routerArray: [],
@@ -41,9 +48,6 @@ export default {
         },
         routerClick(data) {
             let childrenArray = [...data.children];
-            // for (let item of childrenArray) {
-            //     item.component = item.component.toString();
-            // }
             this.editRoute(childrenArray)
             // @ts-ignore
             this.$router.push({
@@ -62,6 +66,8 @@ export default {
         height: 100%;
     }
     .practice-ul  {
+        display: flex;
+        justify-content: space-around;
         li > div {
             cursor: pointer;
         }

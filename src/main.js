@@ -1,5 +1,6 @@
 import 'element-ui/lib/theme-chalk/index.css';
 import './permission';
+import 'vue-json-pretty/lib/styles.css'
 
 //  按需引入element
 import {
